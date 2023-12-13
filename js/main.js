@@ -37,6 +37,8 @@ createApp ({
         }
     },
     mounted(){
-
+        this.mailGenerator()
+        console.log(this.mailList);
+        console.log('App loaded');
     },
 }).mount('#app');
