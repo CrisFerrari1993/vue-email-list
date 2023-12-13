@@ -20,12 +20,11 @@
             <div id="app">
                 <h1>Mail adresses Generator</h1>
                 <div id="mail-container">
-                    <ul v-if="mailLists.length === randomEmailNum">
-                        <li v-for="mailList in mailLists">
-                            <a>{{mailList}}</a>
+                    <ul v-if="randomEmails.length === numRandomEmails">
+                        <li v-for="randomEmail in randomEmails">
+                            <a href="mailTo:{{randomEmail}}">{{randomEmail}}</a>
                         </li>
                     </ul>
-                    <button @click="mailGenerator">Premi</button>
                 </div>
             </div>
         </div>

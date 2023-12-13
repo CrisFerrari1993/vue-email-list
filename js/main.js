@@ -12,33 +12,34 @@ const { createApp } = Vue;
 createApp ({
     data() {
         return {
-            //Variables for mail(array) mail Num (number)
-            randomEmailNum : 10,
-            mailLists : []
+            numRandomEmails: 10,
+            randomEmails: [],
         }
     },
     methods: {
-        mailGenerator() {
-            // Array lenght 0
-            this.mailLists.length = 0;
-            //cycle for, 10 randoms mail
-            for ( let i = 0; i <= this.randomEmailNum; i++){
-                // axios api inclusion
+        generateEmail() {
+            //svuota array
+            this.randomEmails.length = 0;
+            // ciclo per generare 10 email random
+            for (let i = 0; i < this.numRandomEmails; i++) {
+                //tramite una API generare una email random
                 axios
                     .get('https://flynn.boolean.careers/exercises/api/random/mail')
                     .then(
                         response => {
-                            this.mailLists.push(response.data.response);
-                    }
-                );
+                            this.randomEmails.push(response.data.response);
+                        }
+                    );
             }
-            console.log(this.mailLists);
-            console.log(this.randomEmailNum);
+            console.log(this.randomEmails);
+            console.log(this.numRandomEmails);
         }
     },
-    mounted(){
-        this.mailGenerator()
-        console.log(this.mailLists);
-        console.log('App loaded');
-    },
-}).mount('#app');
+    mounted() {
+        this.generateEmail()
+
+        console.log(this.randomEmails);
+
+        console.log("ho caricato l'app");
+    }
+}).mount("#app")
