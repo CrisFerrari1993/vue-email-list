@@ -14,13 +14,13 @@ createApp ({
         return {
             //Variables for mail(array) mail Num (number)
             randomEmailNum : 10,
-            mailList : []
+            mailLists : []
         }
     },
     methods: {
         mailGenerator() {
             // Array lenght 0
-            this.mailList.length = 0;
+            this.mailLists.length = 0;
             //cycle for, 10 randoms mail
             for ( let i = 0; i <= this.randomEmailNum; i++){
                 // axios api inclusion
@@ -28,17 +28,17 @@ createApp ({
                     .get('https://flynn.boolean.careers/exercises/api/random/mail')
                     .then(
                         response => {
-                            this.mailList.push(response.data.response);
+                            this.mailLists.push(response.data.response);
                     }
                 );
             }
-            console.log(this.mailList);
+            console.log(this.mailLists);
             console.log(this.randomEmailNum);
         }
     },
     mounted(){
         this.mailGenerator()
-        console.log(this.mailList);
+        console.log(this.mailLists);
         console.log('App loaded');
     },
 }).mount('#app');

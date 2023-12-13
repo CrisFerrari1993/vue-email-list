@@ -6,7 +6,9 @@
     <!-- Vue JS Link -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- Axios link -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"
+        integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Link persoal CSS -->
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
@@ -18,11 +20,12 @@
             <div id="app">
                 <h1>Mail adresses Generator</h1>
                 <div id="mail-container">
-                    <ul>
-                        <li>
-                            <a href=""></a>
+                    <ul v-if="mailLists.length === randomEmailNum">
+                        <li v-for="mailList in mailLists">
+                            <a>{{mailList}}</a>
                         </li>
                     </ul>
+                    <button @click="mailGenerator">Premi</button>
                 </div>
             </div>
         </div>
